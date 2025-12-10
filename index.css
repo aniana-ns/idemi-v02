@@ -1,0 +1,136 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: 'Inter', sans-serif;
+  top: 0px !important;
+}
+
+/* === Global Overrides === */
+*, *:focus, *:active, button:focus, input:focus, a:focus {
+  outline: none !important;
+  --tw-ring-offset-width: 0px !important;
+  --tw-ring-color: transparent !important;
+  --tw-ring-offset-shadow: 0 0 #0000 !important;
+  --tw-ring-shadow: 0 0 #0000 !important;
+  box-shadow: none !important;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* === Scroll Animations === */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger-1 { transition-delay: 100ms; }
+.stagger-2 { transition-delay: 200ms; }
+.stagger-3 { transition-delay: 300ms; }
+.stagger-4 { transition-delay: 400ms; }
+
+/* === Nav Hover Animation === */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: currentColor;
+  transition: width 0.3s ease-out;
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* === Marquee Animation for Ticker === */
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+.animate-marquee {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: marquee 80s linear infinite;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* === Google Translate Custom Styling === */
+/* Hide the top bar and branding */
+.goog-te-banner-frame {
+    display: none !important;
+}
+body > .skiptranslate {
+    display: none !important;
+}
+
+.goog-te-gadget {
+    font-family: inherit !important;
+    font-size: 0 !important; /* Hides 'Powered by Google' text */
+    color: transparent !important;
+    display: flex !important;
+    align-items: center;
+}
+
+/* Hide logo and spans */
+.goog-te-gadget .goog-logo-link, 
+.goog-te-gadget > span {
+    display: none !important;
+}
+
+/* Native Select Styling */
+.goog-te-combo {
+    padding: 4px 8px !important;
+    border: 1px solid #e2e8f0 !important; /* gray-200 */
+    border-radius: 6px !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    color: #4b5563 !important; /* gray-600 */
+    background-color: white !important;
+    outline: none !important;
+    height: auto !important;
+    cursor: pointer !important;
+    margin: 0 !important;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+    transition: all 0.2s ease-in-out;
+}
+
+.goog-te-combo:hover {
+    border-color: #1e3a8a !important; /* primary color */
+}
+
+/* Dark mode support */
+html.dark .goog-te-combo {
+    background-color: #1f2937 !important; /* gray-800 */
+    border-color: #374151 !important; /* gray-700 */
+    color: #e5e7eb !important; /* gray-200 */
+}
+
+html.dark .goog-te-combo:hover {
+    border-color: #60a5fa !important; /* blue-400 */
+}
+
+#google_translate_element {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+}
