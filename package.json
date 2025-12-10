@@ -4,6 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "homepage": "https://idemiv2.gt.tc/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aniana-ns/idemi-v02.git"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
