@@ -46,8 +46,8 @@ const Footer: React.FC = () => {
                 <li><Link to="/services" className={footerLinkClass}>Our Services</Link></li>
                 <li><Link to="/training" className={footerLinkClass}>Training Programs</Link></li>
                 <li><Link to="/contact" className={footerLinkClass}>Contact Us</Link></li>
-                <li><Link to="/sitemap" className={footerLinkClass}>Sitemap</Link></li>
                 <li><Link to="/newsletter" className={footerLinkClass}>Newsletter</Link></li>
+                <li><Link to="/sitemap" className={footerLinkClass}>Sitemap</Link></li>
               </ul>
             </nav>
           </div>
