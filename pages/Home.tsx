@@ -227,11 +227,11 @@ const Home: React.FC = () => {
       <HomePopup />
 
       {/* Stats Section */}
-      <section className="py-12 bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800" aria-label="Key Statistics">
+      <section className="py-12 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800" aria-label="Key Statistics">
         <div className="container mx-auto px-4">
-          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 grid grid-cols-2 md:grid-cols-4 gap-8 text-center border border-gray-100 dark:border-gray-700 reveal-on-scroll">
+          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 grid grid-cols-2 md:grid-cols-4 gap-8 text-center border border-gray-200 dark:border-gray-700 reveal-on-scroll">
             {INITIAL_STATS.map((stat, index) => (
-              <div key={index} className={`p-4 ${index !== 0 ? 'md:border-l md:border-gray-100 dark:md:border-gray-700' : ''}`}>
+              <div key={index} className={`p-4 ${index !== 0 ? 'md:border-l md:border-gray-200 dark:md:border-gray-700' : ''}`}>
                 <div className="text-4xl font-bold text-primary dark:text-blue-400 mb-2">{stat.value}</div>
                 <div className="text-sm text-gray-500 dark:text-gray-400 font-medium uppercase">{stat.label}</div>
               </div>
@@ -241,7 +241,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Services Preview */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-950">
+      <section className="py-20 bg-gray-100 dark:bg-gray-950">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 reveal-on-scroll">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Our Expertise</h2>
@@ -280,7 +280,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Features Split */}
-      <section className="py-20 bg-white dark:bg-gray-900 overflow-hidden border-t border-gray-100 dark:border-gray-800">
+      <section className="py-20 bg-white dark:bg-gray-900 overflow-hidden border-t border-gray-200 dark:border-gray-800">
         <div className="container mx-auto px-4 flex flex-col md:flex-row items-center gap-16">
           <div className="md:w-1/2 reveal-on-scroll">
             <div className="relative group">
@@ -291,7 +291,7 @@ const Home: React.FC = () => {
                 sizes="(max-width: 768px) 100vw, 50vw"
                 alt="Lab Technician working on instruments" 
                 loading="lazy"
-                className="relative rounded-2xl shadow-2xl object-cover h-96 w-full transform -rotate-3 group-hover:-rotate-2 transition-transform duration-300"
+                className="relative rounded-2xl shadow-2xl object-cover h-96 w-full transform -rotate-3 group-hover:-rotate-2 transition-transform duration-300 border-4 border-white dark:border-gray-800"
               />
             </div>
           </div>
@@ -326,12 +326,12 @@ const Home: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {TRAINING_PREVIEW.map((course, index) => (
-                <div key={index} className={`bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 reveal-on-scroll stagger-${(index % 3) + 1} hover:shadow-lg transition-all group`}>
+                <div key={index} className={`bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 reveal-on-scroll stagger-${(index % 3) + 1} hover:shadow-xl transition-all group hover:-translate-y-1`}>
                     <div className="flex items-center gap-3 mb-4">
                         <div className="bg-blue-100 dark:bg-blue-900/40 p-2.5 rounded-lg text-primary dark:text-blue-400 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
                             <BookOpen size={24} />
                         </div>
-                        <div className="text-xs font-bold px-2 py-1 rounded bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300">
+                        <div className="text-xs font-bold px-2 py-1 rounded bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-600">
                             {course.type}
                         </div>
                     </div>
@@ -361,7 +361,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Quick Links / Updates Section */}
-      <section className="py-20 bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800">
+      <section className="py-20 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 reveal-on-scroll">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Latest Updates & Opportunities</h2>
@@ -372,9 +372,9 @@ const Home: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {QUICK_LINKS.map((item, index) => (
-              <div key={index} className={`bg-gray-50 dark:bg-gray-800 rounded-xl p-6 border border-gray-100 dark:border-gray-700 hover:shadow-lg transition-all duration-300 group reveal-on-scroll stagger-${index + 1}`}>
+              <div key={index} className={`bg-gray-50 dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all duration-300 group reveal-on-scroll stagger-${index + 1}`}>
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="p-3 bg-white dark:bg-gray-700 rounded-full shadow-sm group-hover:scale-110 transition-transform">
+                  <div className="p-3 bg-white dark:bg-gray-700 rounded-full shadow-md group-hover:scale-110 transition-transform">
                     {item.icon}
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white">{item.title}</h3>
@@ -395,7 +395,7 @@ const Home: React.FC = () => {
 
                 <Link 
                   to={item.link} 
-                  className="inline-flex items-center justify-center w-full py-3 bg-white dark:bg-gray-700 text-primary dark:text-blue-400 font-bold rounded-lg border border-gray-200 dark:border-gray-600 hover:bg-primary hover:text-white dark:hover:bg-blue-600 dark:hover:text-white transition-all shadow-sm group-hover:shadow-md"
+                  className="inline-flex items-center justify-center w-full py-3 bg-white dark:bg-gray-700 text-primary dark:text-blue-400 font-bold rounded-lg border border-gray-300 dark:border-gray-600 hover:bg-primary hover:text-white dark:hover:bg-blue-600 dark:hover:text-white transition-all shadow-sm group-hover:shadow-md"
                 >
                   View Details <ArrowRight size={16} className="ml-2" />
                 </Link>
@@ -421,7 +421,7 @@ const Home: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {INITIAL_NEWS.slice(0, 3).map((item, index) => (
-                <article key={item.id} className={`bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 flex flex-col h-full reveal-on-scroll stagger-${(index % 3) + 1} transition-all duration-300 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] active:shadow-sm cursor-pointer`}>
+                <article key={item.id} className={`bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 flex flex-col h-full reveal-on-scroll stagger-${(index % 3) + 1} transition-all duration-300 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] active:shadow-sm cursor-pointer`}>
                 {item.date && <div className="text-secondary dark:text-amber-500 text-sm font-bold mb-2">{item.date}</div>}
                 <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3 hover:text-primary dark:hover:text-blue-400 transition-colors">
                     {item.link ? (
