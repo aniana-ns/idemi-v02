@@ -20,7 +20,13 @@ const ROUTE_LABELS: Record<string, string> = {
   'uxui': 'UX / UI Design',
   'led': 'LED Testing',
   'techtransfer': 'Technology Transfer',
-  'smt-assembly': 'SMT Assembly'
+  'smt-assembly': 'SMT Assembly',
+  'extension-centre': 'Extension Centres'
+};
+
+// Map segments to redirect paths if the segment itself isn't a valid page
+const PATH_REDIRECTS: Record<string, string> = {
+  'extension-centre': '/extensions'
 };
 
 const Breadcrumbs: React.FC = () => {
@@ -45,7 +51,6 @@ const Breadcrumbs: React.FC = () => {
             </Link>
           </li>
           {pathnames.map((name, index) => {
-            const routeTo = `/${pathnames.slice(0, index + 1).join('/')}`;
             const isLast = index === pathnames.length - 1;
             
             // Strip file extension if present (e.g., .php, .html)
@@ -54,6 +59,12 @@ const Breadcrumbs: React.FC = () => {
             // Resolve display name: Use map if available, otherwise format string
             const displayName = ROUTE_LABELS[cleanName.toLowerCase()] || 
                                 cleanName.replace(/[-_]/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase());
+
+            // Construct path, checking for redirects
+            let routeTo = `/${pathnames.slice(0, index + 1).join('/')}`;
+            if (PATH_REDIRECTS[cleanName.toLowerCase()]) {
+                routeTo = PATH_REDIRECTS[cleanName.toLowerCase()];
+            }
 
             return (
               <li key={name} className="flex items-center">
