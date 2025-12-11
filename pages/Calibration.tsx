@@ -85,8 +85,18 @@ const Calibration: React.FC = () => {
       <SEO 
         seo={{ 
           title: 'NABL Accredited Calibration Services - Electrical, Thermal & Mechanical | IDEMI', 
-          description: 'Premier Calibration Laboratory in Asia accredited by NABL (CC-2287). High precision calibration for Electro-Technical, Thermal, Pressure, Mass, Flow, and Dimensional parameters.',
-          keywords: ['Calibration Services', 'NABL Accredited Lab', 'Electro-Technical Calibration', 'Thermal Calibration', 'Mechanical Calibration', 'ISO 17025:2017', 'IDEMI Calibration', 'Precision Standards', 'Mumbai'],
+          description: 'Premier Calibration Laboratory in Asia accredited by NABL (CC-2287). High precision calibration for Electro-Technical, Thermal, Pressure, Mass, Flow, and Dimensional parameters using Primary Standards.',
+          keywords: [
+            'NABL Calibration Services',
+            'ISO/IEC 17025:2017', 
+            'Electro-Technical Calibration', 
+            'Thermal Calibration', 
+            'Mechanical Calibration', 
+            'Dimensional Metrology',
+            'Flow Meter Calibration',
+            'Precision Standards',
+            'IDEMI Mumbai Calibration'
+          ],
           schemaType: 'Service'
         }} 
         path="/services/calibration" 
