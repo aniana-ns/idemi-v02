@@ -1,23 +1,20 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Map, FileText, Wrench, GraduationCap, Download, Building2 } from 'lucide-react';
+import { ArrowLeft, Map, FileText, Wrench, GraduationCap, Download, Building2, Info, ShieldCheck, Scale, Zap, Users } from 'lucide-react';
 import SEO from '../components/SEO';
 import { useScrollAnimation } from '../lib/useScrollAnimation';
 
 const SITEMAP_DATA = [
   {
-    category: 'General',
+    category: 'General & Contact',
     icon: <Map className="text-secondary" size={20} />,
     links: [
       { label: 'Home', path: '/' },
       { label: 'About Us', path: '/about' },
       { label: 'Contact Us', path: '/contact' },
       { label: 'Careers', path: '/careers' },
-      { label: 'Extension Centres', path: '/extensions' },
-      { label: 'Extension - Bangalore', path: '/extension-centre/bangalore' },
-      { label: 'Extension - Nagpur', path: '/extension-centre/nagpur' },
-      { label: 'Sub-Centre - Sakinaka', path: '/extension-centre/sakinaka' },
+      { label: 'Job Fair', path: '/jobfair' },
       { label: 'Testimonials', path: '/testimonials' },
       { label: 'Newsletter', path: '/newsletter' },
       { label: 'Privacy Policy', path: '/privacy-policy' },
@@ -25,10 +22,67 @@ const SITEMAP_DATA = [
     ]
   },
   {
-    category: 'Services',
+    category: 'Organization Information',
+    icon: <Info className="text-secondary" size={20} />,
+    links: [
+      { label: "Who's Who", path: '/whos-who' },
+      { label: "Director's Desk", path: '/directors-desk' },
+      { label: 'Vision & Mission', path: '/vision-mission' },
+      { label: 'IDEMI At a Glance', path: '/at-glance' },
+      { label: 'Past Performance', path: '/past_performance' },
+      { label: 'Committee', path: '/committee' },
+      { label: 'CVO & Vigilance', path: '/vigilance' },
+      { label: 'RTI Act', path: '/rti' },
+      { label: 'Holidays List', path: '/holidays' },
+      { label: 'How to Reach Us', path: '/how-to-reach' },
+    ]
+  },
+  {
+    category: 'Certificates & Affiliations',
+    icon: <ShieldCheck className="text-secondary" size={20} />,
+    links: [
+      { label: 'ISO 9001:2015 Certificate', path: '/ISO-9001-2015-Certificate' },
+      { label: 'Aerospace AS9100 Rev.D', path: '/ISO-AS9100-2016' },
+      { label: 'NABL Certificate', path: '/NABL-Certificate' },
+      { label: 'Quality Policy (ISO 17025)', path: '/ISO-IEC' },
+      { label: 'Quality Policy (ISO 9001)', path: '/ISO-AS9100' },
+      { label: 'International Associations', path: '/international-associations' },
+      { label: 'National Associations', path: '/national-associations' },
+    ]
+  },
+  {
+    category: 'Calibration Services',
+    icon: <Scale className="text-secondary" size={20} />,
+    links: [
+      { label: 'Calibration Overview', path: '/services/calibration' },
+      { label: 'Electro-Technical Calibration', path: '/services/calibration/electro-technical' },
+      { label: 'Thermal Calibration', path: '/services/calibration/thermal' },
+      { label: 'Pressure Calibration', path: '/services/calibration/pressure' },
+      { label: 'Mass & Volume', path: '/services/calibration/mass-volume' },
+      { label: 'Dimensional Metrology', path: '/services/calibration/dimensional-metrology' },
+      { label: 'Fluid Flow', path: '/services/calibration/fluid-flow' },
+      { label: 'Laboratory Excellence Award', path: '/services/calibration/laboratory-excellence-award' },
+    ]
+  },
+  {
+    category: 'Testing Services',
+    icon: <Zap className="text-secondary" size={20} />,
+    links: [
+      { label: 'Testing Overview', path: '/services/testing' },
+      { label: 'Safety Testing', path: '/services/testing/safety' },
+      { label: 'EMI-EMC Testing', path: '/services/testing/emi_emc' },
+      { label: 'Environmental Testing', path: '/services/testing/environmental' },
+      { label: 'LED Testing & Photometry', path: '/services/testing/led' },
+      { label: 'Type Testing', path: '/services/testing/type' },
+      { label: 'Monoblock Pump Testing', path: '/services/testing/monoblock_pumpset' },
+      { label: 'Centrifugal Pump Testing', path: '/services/testing/centrifugal_pump' },
+      { label: 'LOCA Test Facility', path: '/services/testing/loca-test-facility' },
+    ]
+  },
+  {
+    category: 'Manufacturing & Design Services',
     icon: <Wrench className="text-secondary" size={20} />,
     links: [
-      { label: 'Services Overview', path: '/services' },
       { label: 'Tool Room Services', path: '/services/tool-room' },
       { label: 'Tool Design', path: '/services/tool-design' },
       { label: 'Precision Machining', path: '/services/precision-machining' },
@@ -40,6 +94,12 @@ const SITEMAP_DATA = [
       { label: 'SMT Assembly', path: '/services/design-development/smt-assembly' },
       { label: 'Technology Transfer', path: '/services/design-development/techtransfer' },
       { label: 'Tool Room Infrastructure', path: '/services/tool-room-infrastructure' },
+    ]
+  },
+  {
+    category: 'Facilities & Consultancy',
+    icon: <Building2 className="text-secondary" size={20} />,
+    links: [
       { label: 'Consultancy Services', path: '/services/consultancy' },
       { label: 'Library', path: '/services/library' },
       { label: 'Hostel Facilities', path: '/services/hostel' },
@@ -47,31 +107,7 @@ const SITEMAP_DATA = [
     ]
   },
   {
-    category: 'Calibration & Testing',
-    icon: <FileText className="text-secondary" size={20} />,
-    links: [
-      { label: 'Calibration Overview', path: '/services/calibration' },
-      { label: 'Electro-Technical Calibration', path: '/services/calibration/electro-technical' },
-      { label: 'Thermal Calibration', path: '/services/calibration/thermal' },
-      { label: 'Pressure Calibration', path: '/services/calibration/pressure' },
-      { label: 'Mass & Volume', path: '/services/calibration/mass-volume' },
-      { label: 'Dimensional Metrology', path: '/services/calibration/dimensional-metrology' },
-      { label: 'Fluid Flow', path: '/services/calibration/fluid-flow' },
-      { label: 'Laboratory Excellence Award', path: '/services/calibration/laboratory-excellence-award' },
-      { label: 'Testing Overview', path: '/services/testing' },
-      { label: 'Safety Testing', path: '/services/testing/safety' },
-      { label: 'EMI-EMC Testing', path: '/services/testing/emi_emc' },
-      { label: 'Environmental Testing', path: '/services/testing/environmental' },
-      { label: 'LED Testing', path: '/services/testing/led' },
-      { label: 'Type Testing', path: '/services/testing/type' },
-      { label: 'Pump Testing', path: '/services/testing/centrifugal_pump' },
-      { label: 'LOCA Test Facility', path: '/services/testing/loca-test-facility' },
-      { label: 'TEC - Accreditation', path: `/view-document?url=https://idemi.org/assets/uploads/TEC%20accreditation.pdf&title=TEC Accreditation` },
-      { label: 'TEC - Test Fees Schedule', path: `/view-document?url=https://idemi.org/assets/uploads/TEC%20-%20Test%20Fee%20Schedule.pdf&title=TEC Test Fees Schedule` },
-    ]
-  },
-  {
-    category: 'Training & Courses',
+    category: 'Training Programs',
     icon: <GraduationCap className="text-secondary" size={20} />,
     links: [
       { label: 'Training Introduction', path: '/training/introduction' },
@@ -83,11 +119,16 @@ const SITEMAP_DATA = [
       { label: 'Online Training', path: '/training/online-training' },
       { label: 'Long Term Courses', path: '/training/post-graduate-post-diploma' },
       { label: 'Sponsored Schemes', path: '/training/schemes/day-nulm' },
-      { label: 'Job Fair', path: '/jobfair' },
       { label: 'Student Registration', path: '/student-registration' },
       { label: 'Alumni Registration', path: '/alumni-registration' },
       { label: 'SC-ST Beneficiaries', path: '/training/sc_st_beneficiaries' },
       { label: 'Training Enquiry', path: '/training/enquiry' },
+    ]
+  },
+  {
+    category: 'Specialized Courses',
+    icon: <GraduationCap className="text-secondary" size={20} />,
+    links: [
       { label: 'ANSYS Training', path: '/courses/mechanical-courses/ansys' },
       { label: 'Unigraphics (NX)', path: '/courses/mechanical-courses/unigraphics' },
       { label: 'AutoCAD Mechanical', path: '/courses/mechanical-courses/autocad' },
@@ -97,7 +138,7 @@ const SITEMAP_DATA = [
   },
   {
     category: 'Government Schemes',
-    icon: <Building2 className="text-secondary" size={20} />,
+    icon: <Users className="text-secondary" size={20} />,
     links: [
       { label: 'PMKVY Scheme', path: '/schemes/pmkvy' },
       { label: 'National SC-ST Hub', path: '/schemes/sc-st-hub' },
@@ -108,6 +149,16 @@ const SITEMAP_DATA = [
       { label: 'BMC Sponsored Training', path: '/schemes/bmc' },
       { label: 'MeitY Dashboard', path: '/meity/dashboard' },
       { label: 'COVID-19 Products', path: '/covid19_products' },
+    ]
+  },
+  {
+    category: 'Extension Centres',
+    icon: <Map className="text-secondary" size={20} />,
+    links: [
+      { label: 'Centres Overview', path: '/extensions' },
+      { label: 'Bangalore Centre', path: '/extension-centre/bangalore' },
+      { label: 'Nagpur Centre', path: '/extension-centre/nagpur' },
+      { label: 'Sakinaka Sub-Centre', path: '/extension-centre/sakinaka' },
     ]
   },
   {
@@ -132,8 +183,8 @@ const Sitemap: React.FC = () => {
       <SEO 
         seo={{ 
           title: 'Sitemap | IDEMI', 
-          description: 'Overview of website structure and links.',
-          keywords: ['Sitemap', 'IDEMI Links', 'Website Map', 'Navigation'],
+          description: 'Overview of website structure and links to all services, training programs, and information pages.',
+          keywords: ['Sitemap', 'IDEMI Links', 'Website Map', 'Navigation', 'Page List'],
           schemaType: 'WebSite'
         }} 
         path="/sitemap" 
