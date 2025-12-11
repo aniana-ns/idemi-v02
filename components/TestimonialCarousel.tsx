@@ -99,7 +99,7 @@ const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({ testimonials,
             onMouseLeave={() => setIsPaused(false)}
         >
             {/* Main Card */}
-            <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-700 p-8 md:p-12 relative min-h-[320px] flex items-center transition-all duration-300 hover:shadow-blue-900/5 dark:hover:shadow-black/40">
+            <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl hover:shadow-2xl border border-gray-200 dark:border-gray-700 p-8 md:p-12 relative min-h-[320px] flex items-center transition-all duration-300">
                 {/* Large Quote Icon */}
                 <Quote className="absolute top-8 left-8 text-blue-100 dark:text-gray-700 w-24 h-24 -z-0 opacity-50 transform -scale-x-100" />
                 
@@ -107,7 +107,7 @@ const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({ testimonials,
                     
                     {/* Avatar / Profile Side */}
                     <div className="shrink-0 flex flex-col items-center">
-                        <div className={`w-24 h-24 rounded-full bg-gradient-to-br ${getAvatarColor(activeItem.name)} flex items-center justify-center text-white text-3xl font-bold shadow-lg mb-4 ring-4 ring-white dark:ring-gray-700`}>
+                        <div className={`w-24 h-24 rounded-full bg-gradient-to-br ${getAvatarColor(activeItem.name)} flex items-center justify-center text-white text-3xl font-bold shadow-lg mb-4 ring-4 ring-gray-100 dark:ring-gray-700`}>
                             {getInitials(activeItem.name)}
                         </div>
                         <div className="flex gap-1 text-amber-400" aria-label="5 out of 5 stars">
@@ -131,14 +131,14 @@ const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({ testimonials,
             {/* Navigation Buttons - Floating */}
             <button 
                 onClick={handlePrev}
-                className="absolute top-1/2 -left-4 md:-left-8 -translate-y-1/2 bg-white dark:bg-gray-800 text-gray-800 dark:text-white p-3 md:p-4 rounded-full shadow-lg hover:bg-primary hover:text-white dark:hover:bg-blue-600 transition-all focus:outline-none focus:ring-4 focus:ring-blue-100 dark:focus:ring-gray-700 z-20 border border-gray-100 dark:border-gray-700 group-hover:scale-100 md:scale-90"
+                className="absolute top-1/2 -left-4 md:-left-8 -translate-y-1/2 bg-white dark:bg-gray-800 text-gray-800 dark:text-white p-3 md:p-4 rounded-full shadow-lg hover:bg-primary hover:text-white dark:hover:bg-blue-600 transition-all focus:outline-none focus:ring-4 focus:ring-blue-100 dark:focus:ring-gray-700 z-20 border border-gray-200 dark:border-gray-700 group-hover:scale-100 md:scale-90"
                 aria-label="Previous testimonial"
             >
                 <ChevronLeft size={24} />
             </button>
             <button 
                 onClick={handleNext}
-                className="absolute top-1/2 -right-4 md:-right-8 -translate-y-1/2 bg-white dark:bg-gray-800 text-gray-800 dark:text-white p-3 md:p-4 rounded-full shadow-lg hover:bg-primary hover:text-white dark:hover:bg-blue-600 transition-all focus:outline-none focus:ring-4 focus:ring-blue-100 dark:focus:ring-gray-700 z-20 border border-gray-100 dark:border-gray-700 group-hover:scale-100 md:scale-90"
+                className="absolute top-1/2 -right-4 md:-right-8 -translate-y-1/2 bg-white dark:bg-gray-800 text-gray-800 dark:text-white p-3 md:p-4 rounded-full shadow-lg hover:bg-primary hover:text-white dark:hover:bg-blue-600 transition-all focus:outline-none focus:ring-4 focus:ring-blue-100 dark:focus:ring-gray-700 z-20 border border-gray-200 dark:border-gray-700 group-hover:scale-100 md:scale-90"
                 aria-label="Next testimonial"
             >
                 <ChevronRight size={24} />
