@@ -275,12 +275,12 @@ const NavItem: React.FC<NavItemProps> = ({ item, depth = 0 }) => {
 
           {hasChildren && isOpen && (
             isMega ? (
-                 <div id={uniqueId} className="absolute top-full left-0 w-full bg-white dark:bg-gray-900 shadow-xl border-t border-gray-100 dark:border-gray-800 animate-fade-in z-50">
+                 <div id={uniqueId} className="absolute top-full left-0 w-full bg-white dark:bg-gray-900 shadow-xl border-t border-gray-200 dark:border-gray-800 animate-fade-in z-50">
                     <div className="container mx-auto px-4 py-6">
                         <div className="grid grid-cols-4 gap-8">
                             {item.children!.map((col, idx) => (
                                 <div key={idx}>
-                                    <h4 className="font-bold text-primary dark:text-blue-400 border-b border-gray-100 dark:border-gray-800 pb-2 mb-3 text-sm uppercase tracking-wider">
+                                    <h4 className="font-bold text-primary dark:text-blue-400 border-b border-gray-200 dark:border-gray-800 pb-2 mb-3 text-sm uppercase tracking-wider">
                                         {col.label}
                                     </h4>
                                     <ul className="space-y-1">
@@ -296,7 +296,7 @@ const NavItem: React.FC<NavItemProps> = ({ item, depth = 0 }) => {
                     </div>
                  </div>
             ) : (
-                <div id={uniqueId} className="absolute top-full left-0 w-72 bg-white dark:bg-gray-800 shadow-xl rounded-md py-2 animate-fade-in z-50 border border-gray-100 dark:border-gray-700 text-left">
+                <div id={uniqueId} className="absolute top-full left-0 w-72 bg-white dark:bg-gray-800 shadow-xl rounded-md py-2 animate-fade-in z-50 border border-gray-200 dark:border-gray-700 text-left ring-1 ring-black ring-opacity-5">
                     {item.children!.map((child, idx) => (
                         <NavItem key={idx} item={child} depth={depth + 1} />
                     ))}
@@ -342,7 +342,7 @@ const NavItem: React.FC<NavItemProps> = ({ item, depth = 0 }) => {
         )}
 
         {hasChildren && isOpen && (
-           <div id={uniqueId} className="absolute top-0 left-full w-72 bg-white dark:bg-gray-800 shadow-xl rounded-md py-2 animate-fade-in z-50 border border-gray-100 dark:border-gray-700 -ml-1 text-left">
+           <div id={uniqueId} className="absolute top-0 left-full w-72 bg-white dark:bg-gray-800 shadow-xl rounded-md py-2 animate-fade-in z-50 border border-gray-200 dark:border-gray-700 -ml-1 text-left ring-1 ring-black ring-opacity-5">
              {item.children!.map((child, idx) => (
                <NavItem key={idx} item={child} depth={depth + 1} />
              ))}
@@ -544,8 +544,8 @@ const Header: React.FC = () => {
   `;
 
   return (
-    <header className="w-full z-[1000] font-sans sticky top-0">
-      <div className="w-full shadow-md bg-white dark:bg-gray-900 transition-colors duration-200">
+    <header className="w-full z-[1000] font-sans sticky top-0 shadow-lg">
+      <div className="w-full bg-white dark:bg-gray-900 transition-colors duration-200">
         
         <div className="bg-[#1b3270] text-white py-1.5 text-[10px] sm:text-xs relative z-[102]">
             <div className="container mx-auto px-4 flex justify-between items-center">
@@ -563,7 +563,7 @@ const Header: React.FC = () => {
             </div>
         </div>
 
-        <div className="bg-white dark:bg-gray-900 z-[101] relative border-b border-gray-100 dark:border-gray-800">
+        <div className="bg-white dark:bg-gray-900 z-[101] relative border-b border-gray-200 dark:border-gray-800">
             <div className="container mx-auto px-4 py-2 sm:py-4 flex justify-between items-center">
                 <Link to="/" className="flex items-center gap-3 sm:gap-5 group focus:outline-none rounded p-1 flex-1 min-w-0 mr-2 sm:mr-4" aria-label="IDEMI Home">
                     <img src="https://idemi.org/assets/images/LOGO-27042023.png" alt="IDEMI Logo" className="h-10 sm:h-20 w-auto object-contain shrink-0" />
@@ -609,7 +609,7 @@ const Header: React.FC = () => {
             </div>
         </div>
 
-        <div className="hidden xl:block border-b border-gray-100 dark:border-gray-800 bg-slate-50 dark:bg-gray-900 z-[100] relative shadow-sm">
+        <div className="hidden xl:block border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 z-[100] relative shadow-sm">
             <div className="container mx-auto px-4">
                 <nav className="flex justify-between items-center" role="navigation" aria-label="Main Navigation">
                     <ul className="flex flex-wrap gap-2 xl:gap-4 items-center" role="menubar">
@@ -708,7 +708,7 @@ const Header: React.FC = () => {
             </div>
         </div>
 
-        <div className={`absolute top-full left-0 w-full bg-white dark:bg-gray-900 shadow-lg border-t border-gray-100 dark:border-gray-800 transition-all duration-300 origin-top ${isSearchOpen ? 'opacity-100 visible scale-y-100' : 'opacity-0 invisible scale-y-0'} z-[99]`}>
+        <div className={`absolute top-full left-0 w-full bg-white dark:bg-gray-900 shadow-xl border-t border-gray-200 dark:border-gray-800 transition-all duration-300 origin-top ${isSearchOpen ? 'opacity-100 visible scale-y-100' : 'opacity-0 invisible scale-y-0'} z-[99]`}>
             <div className="container mx-auto px-4 py-4">
             <form onSubmit={handleSearch} className="relative max-w-3xl mx-auto">
                 <div className="relative flex items-center">
@@ -719,7 +719,7 @@ const Header: React.FC = () => {
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search for services, training, documents..."
-                    className="w-full pl-12 pr-12 py-3 rounded-full border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary outline-none transition-all"
+                    className="w-full pl-12 pr-12 py-3 rounded-full border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary outline-none transition-all"
                     autoComplete="off"
                     aria-label="Search Query"
                     />
@@ -734,14 +734,14 @@ const Header: React.FC = () => {
                 </div>
 
                 {suggestions.length > 0 && (
-                <div className="absolute top-full left-0 w-full mt-2 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-100 dark:border-gray-700 overflow-hidden z-50">
+                <div className="absolute top-full left-0 w-full mt-2 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden z-50">
                     <ul role="listbox">
                     {suggestions.map((item, index) => (
                         <li key={index} role="option" aria-selected={false}>
                         <button
                             type="button"
                             onClick={() => handleSuggestionClick(item.path)}
-                            className="w-full text-left px-6 py-3 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors border-b border-gray-50 dark:border-gray-700/50 last:border-none flex justify-between items-center group"
+                            className="w-full text-left px-6 py-3 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors border-b border-gray-200 dark:border-gray-700/50 last:border-none flex justify-between items-center group"
                         >
                             <div>
                             <p className="font-medium text-gray-900 dark:text-white text-sm group-hover:text-primary dark:group-hover:text-blue-400">{item.title}</p>
@@ -764,7 +764,7 @@ const Header: React.FC = () => {
         <div
             id="mobile-menu"
             ref={mobileMenuRef}
-            className={`xl:hidden absolute top-full left-0 w-full bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-t border-gray-100 dark:border-gray-800 shadow-2xl py-4 px-4 flex flex-col gap-2 z-[9999] max-h-[85vh] overflow-y-auto overscroll-contain transition-all duration-300 ease-in-out ${
+            className={`xl:hidden absolute top-full left-0 w-full bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-t border-gray-200 dark:border-gray-800 shadow-2xl py-4 px-4 flex flex-col gap-2 z-[9999] max-h-[85vh] overflow-y-auto overscroll-contain transition-all duration-300 ease-in-out ${
             isMenuOpen 
                 ? 'opacity-100 visible translate-y-0' 
                 : 'opacity-0 invisible -translate-y-2 pointer-events-none'
@@ -777,14 +777,14 @@ const Header: React.FC = () => {
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search..."
-                    className="w-full pl-10 pr-4 py-2.5 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary outline-none"
+                    className="w-full pl-10 pr-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary outline-none"
                     aria-label="Mobile Search"
                 />
                 <Search className="absolute left-3 top-3 text-gray-400" size={18} aria-hidden="true" />
             </form>
             </div>
 
-            <div className="flex items-center justify-between px-2 py-3 border-b border-gray-100 dark:border-gray-800 mb-2">
+            <div className="flex items-center justify-between px-2 py-3 border-b border-gray-200 dark:border-gray-800 mb-2">
             <span className="text-sm font-semibold text-gray-600 dark:text-gray-400">Theme</span>
             <button 
                 onClick={toggleTheme} 
@@ -796,7 +796,7 @@ const Header: React.FC = () => {
             </button>
             </div>
 
-            <div className="flex items-center justify-between px-2 py-3 border-b border-gray-100 dark:border-gray-800 mb-2">
+            <div className="flex items-center justify-between px-2 py-3 border-b border-gray-200 dark:border-gray-800 mb-2">
               <div className="flex items-center gap-2">
                   <Globe size={18} className="text-gray-500 dark:text-gray-400" aria-hidden="true" />
                   <span className="text-sm font-semibold text-gray-600 dark:text-gray-400">Language</span>
