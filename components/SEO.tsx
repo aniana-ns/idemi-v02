@@ -48,16 +48,17 @@ const SEO: React.FC<SEOProps> = ({ seo, path }) => {
     const organizationSchema = {
       "@type": "GovernmentOrganization",
       "name": "Institute for Design of Electrical Measuring Instruments (IDEMI)",
-      "alternateName": "IDEMI Mumbai",
+      "alternateName": ["IDEMI Mumbai", "MSME Technology Centre Mumbai"],
       "url": baseUrl,
       "logo": defaultImage,
+      "image": defaultImage,
       "contactPoint": {
         "@type": "ContactPoint",
         "telephone": CONTACT_INFO.phone,
         "contactType": "customer service",
         "email": CONTACT_INFO.email,
         "areaServed": "IN",
-        "availableLanguage": ["en", "hi"]
+        "availableLanguage": ["en", "hi", "mr"]
       },
       "address": {
         "@type": "PostalAddress",
@@ -67,15 +68,46 @@ const SEO: React.FC<SEOProps> = ({ seo, path }) => {
         "postalCode": "400022",
         "addressCountry": "IN"
       },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "19.0509",
+        "longitude": "72.8729"
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "09:30",
+        "closes": "17:30"
+      },
       "sameAs": [
-        "https://www.facebook.com/idemimumbai",
+        "https://www.facebook.com/IDEMIMumbai/",
         "https://twitter.com/idemimumbai",
-        "https://www.linkedin.com/company/idemi-mumbai"
+        "https://www.linkedin.com/company/idemi-mumbai",
+        "https://www.instagram.com/idemi_mumbai/"
       ]
     };
 
-    if (seo.schemaType === 'Organization' || path === '/') {
-      return { ...baseContext, ...organizationSchema };
+    if (seo.schemaType === 'Organization' || seo.schemaType === 'WebSite' || path === '/') {
+      return { 
+        ...baseContext, 
+        ...organizationSchema,
+        "@type": "GovernmentOrganization" // Reinforce type
+      };
+    }
+
+    if (seo.schemaType === 'LocalBusiness') {
+       return {
+         ...baseContext,
+         ...organizationSchema,
+         "@type": "LocalBusiness",
+         "priceRange": "₹"
+       };
     }
 
     if (seo.schemaType === 'Service') {
@@ -85,8 +117,13 @@ const SEO: React.FC<SEOProps> = ({ seo, path }) => {
         "name": seo.title,
         "description": seo.description,
         "provider": organizationSchema,
-        "areaServed": "IN",
-        "url": currentUrl
+        "serviceType": "Technical Service",
+        "areaServed": {
+            "@type": "Country",
+            "name": "India"
+        },
+        "url": currentUrl,
+        "image": ogImage
       };
     }
 
@@ -97,7 +134,9 @@ const SEO: React.FC<SEOProps> = ({ seo, path }) => {
         "name": seo.title,
         "description": seo.description,
         "provider": organizationSchema,
-        "url": currentUrl
+        "educationalCredentialAwarded": "Diploma/Certificate",
+        "url": currentUrl,
+        "image": ogImage
       };
     }
 
