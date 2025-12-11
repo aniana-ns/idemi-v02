@@ -68,7 +68,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
 
   return (
     <div 
-      className="group relative flex flex-col h-full bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-xl hover:border-primary dark:hover:border-blue-400 transition-all duration-300 border border-gray-100 dark:border-gray-700 overflow-hidden hover:scale-[1.02] hover:bg-gray-50 dark:hover:bg-gray-700/50"
+      className="group relative flex flex-col h-full bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:scale-[1.02] overflow-hidden"
       itemScope 
       itemType="https://schema.org/Service"
       aria-label="ARIA label text"
@@ -117,7 +117,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
       </div>
       
       {/* Content */}
-      <div className="p-6 flex flex-col flex-grow">
+      <div className="p-6 flex flex-col flex-grow bg-white dark:bg-gray-800">
         <h3 itemProp="name" className="text-xl font-bold mb-3 text-gray-900 dark:text-white group-hover:text-primary dark:group-hover:text-blue-400 transition-colors duration-200 leading-tight">
           {service.title}
         </h3>
@@ -129,7 +129,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
         {/* Features / Tags */}
         <div className="flex flex-wrap gap-2 mb-4">
             {(service.features ? service.features : service.tags || []).slice(0, 2).map((feat, idx) => (
-                <span key={idx} className="inline-flex items-center px-2 py-1 rounded text-[10px] font-bold bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 uppercase tracking-wide group-hover:bg-blue-50 dark:group-hover:bg-blue-900/20 group-hover:text-primary dark:group-hover:text-blue-300 transition-colors">
+                <span key={idx} className="inline-flex items-center px-2 py-1 rounded text-[10px] font-bold bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 uppercase tracking-wide group-hover:bg-blue-50 dark:group-hover:bg-blue-900/20 group-hover:text-primary dark:group-hover:text-blue-300 transition-colors border border-gray-200 dark:border-gray-600">
                     {feat}
                 </span>
             ))}
