@@ -88,3 +88,4 @@ const BangaloreExtension: React.FC = () => {
   );
 };
 export default BangaloreExtension;
+
