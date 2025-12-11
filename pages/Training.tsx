@@ -94,7 +94,21 @@ const Training: React.FC = () => {
   return (
     <div className="bg-gray-50 dark:bg-gray-950 min-h-screen transition-colors duration-200">
        <SEO 
-         seo={{ title: 'Training Programs | IDEMI', description: 'Skill Development Courses' }} 
+         seo={{ 
+            title: 'Technical Training Programs | AICTE Diploma & Vocational Courses | IDEMI', 
+            description: 'Government certified skill development courses. AICTE approved Diploma in Tool & Die Making, Mechatronics. Short term courses in CNC, PLC, Automation, and Animation.',
+            keywords: [
+                'AICTE Diploma Courses',
+                'Vocational Training India',
+                'Skill Development Programs',
+                'Tool & Die Making Course',
+                'Mechatronics Diploma',
+                'CNC Programming Course',
+                'Industrial Automation Training',
+                'NSQF Compliant Courses'
+            ],
+            schemaType: 'Course'
+         }} 
          path="/training" 
        />
        
