@@ -142,6 +142,16 @@ const MENU_ITEMS: MenuItem[] = [
           ]
       },
       {
+          label: 'Featured Specialized Courses',
+          children: [
+            { label: 'ANSYS (FEA)', path: '/courses/mechanical-courses/ansys' },
+            { label: 'Unigraphics (NX)', path: '/courses/mechanical-courses/unigraphics' },
+            { label: 'AutoCAD Mechanical', path: '/courses/mechanical-courses/autocad' },
+            { label: 'AR / VR & Graphics', path: '/courses/animation/arvr' },
+            { label: 'UX / UI Design', path: '/uxui' },
+          ]
+      },
+      {
           label: 'Admissions & Forms',
           children: [
             { label: 'Alumni Registration Form', path: '/alumni-registration' },
