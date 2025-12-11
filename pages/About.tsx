@@ -164,8 +164,8 @@ const About: React.FC = () => {
                             <div key={index} className={`relative flex items-center md:justify-between ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
                                 
                                 {/* Content Card */}
-                                <div className="ml-12 md:ml-0 md:w-[45%] bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 hover:-translate-y-1 transition-transform duration-300">
-                                    <div className="flex items-center gap-3 mb-3 border-b border-gray-100 dark:border-gray-700 pb-2">
+                                <div className="ml-12 md:ml-0 md:w-[45%] bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 hover:-translate-y-1 transition-transform duration-300">
+                                    <div className="flex items-center gap-3 mb-3 border-b border-gray-200 dark:border-gray-700 pb-2">
                                         <div className="p-2 bg-blue-50 dark:bg-gray-700 rounded-lg text-primary dark:text-blue-400">
                                             {item.icon}
                                         </div>
@@ -207,10 +207,10 @@ const About: React.FC = () => {
                                 <th className="p-4 border-b dark:border-gray-600 font-bold">Details</th>
                             </tr>
                         </thead>
-                        <tbody className="divide-y divide-gray-100 dark:divide-gray-700 text-sm">
+                        <tbody className="divide-y divide-gray-200 dark:divide-gray-700 text-sm">
                             {SUMMARY_TABLE.map((row, idx) => (
                                 <tr key={idx} className="hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors">
-                                    <td className="p-4 font-semibold text-gray-800 dark:text-gray-300 border-r border-gray-100 dark:border-gray-700">{row.aspect}</td>
+                                    <td className="p-4 font-semibold text-gray-800 dark:text-gray-300 border-r border-gray-200 dark:border-gray-700">{row.aspect}</td>
                                     <td className="p-4 text-gray-600 dark:text-gray-400">{row.details}</td>
                                 </tr>
                             ))}
@@ -235,7 +235,7 @@ const About: React.FC = () => {
                 </h3>
                 <div className="grid md:grid-cols-2 gap-4">
                     {ABOUT_DATA.significance.map((item, idx) => (
-                        <div key={idx} className="flex items-start gap-4 p-3 rounded-lg hover:bg-white/50 dark:hover:bg-black/20 transition-colors">
+                        <div key={idx} className="flex items-start gap-4 p-3 rounded-lg hover:bg-white/50 dark:hover:bg-black/20 transition-colors border border-transparent hover:border-blue-100 dark:hover:border-blue-900">
                             <div className="mt-1 p-2 bg-white dark:bg-gray-800 rounded-full shadow-sm text-secondary dark:text-amber-500">
                                 {item.icon}
                             </div>
@@ -250,7 +250,7 @@ const About: React.FC = () => {
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 border-l-4 border-secondary pl-4">IDEMI Activities</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {ABOUT_DATA.servicesOffered.map((service, index) => (
-                        <div key={index} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
+                        <div key={index} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
                             <div className="flex items-center gap-3 mb-3">
                                 <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg text-primary dark:text-blue-400 group-hover:bg-primary group-hover:text-white transition-colors">
                                     {service.icon}
@@ -268,7 +268,7 @@ const About: React.FC = () => {
             {/* Mission & Vision */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16 reveal-on-scroll">
                 <div className="bg-white dark:bg-gray-800 p-6 rounded-xl border border-gray-200 dark:border-gray-700 flex flex-col shadow-sm hover:border-primary transition-colors">
-                    <div className="flex items-center gap-3 mb-4 border-b border-gray-100 dark:border-gray-700 pb-3">
+                    <div className="flex items-center gap-3 mb-4 border-b border-gray-200 dark:border-gray-700 pb-3">
                         <div className="p-2 bg-primary/10 rounded-full text-primary">
                             <Target size={24} />
                         </div>
@@ -285,7 +285,7 @@ const About: React.FC = () => {
                 </div>
                 
                 <div className="bg-white dark:bg-gray-800 p-6 rounded-xl border border-gray-200 dark:border-gray-700 flex flex-col shadow-sm hover:border-amber-500 transition-colors">
-                    <div className="flex items-center gap-3 mb-4 border-b border-gray-100 dark:border-gray-700 pb-3">
+                    <div className="flex items-center gap-3 mb-4 border-b border-gray-200 dark:border-gray-700 pb-3">
                         <div className="p-2 bg-amber-100 dark:bg-amber-900/30 rounded-full text-amber-600 dark:text-amber-500">
                             <Eye size={24} />
                         </div>
