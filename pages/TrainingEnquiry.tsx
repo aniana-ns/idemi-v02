@@ -243,6 +243,21 @@ const TrainingEnquiry: React.FC = () => {
                     </>
                 )}
              </div>
+
+             {/* Newsletter Promo Banner */}
+             <div className="mt-16 bg-gradient-to-r from-blue-900 to-indigo-900 rounded-2xl p-8 md:p-10 text-center text-white relative overflow-hidden shadow-2xl reveal-on-scroll">
+                <div className="absolute top-0 left-0 w-full h-full opacity-10 bg-[radial-gradient(#ffffff_2px,transparent_2px)] [background-size:30px_30px]"></div>
+                <div className="relative z-10 max-w-2xl mx-auto">
+                    <h3 className="text-2xl md:text-3xl font-bold mb-3">Stay Updated on Admissions</h3>
+                    <p className="text-blue-100 mb-8 text-lg">
+                        Never miss an admission deadline. Subscribe to our newsletter to get instant notifications about new batches and entrance exams.
+                    </p>
+                    <Link to="/newsletter" className="inline-block bg-white text-primary font-bold py-3 px-8 rounded-full hover:bg-blue-50 transition transform hover:scale-105 shadow-lg">
+                        Subscribe for Alerts
+                    </Link>
+                </div>
+            </div>
+
           </div>
       </div>
     </div>
