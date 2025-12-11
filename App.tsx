@@ -19,6 +19,7 @@ const StudentRegistration = lazy(() => import('./pages/StudentRegistration'));
 const AlumniRegistration = lazy(() => import('./pages/AlumniRegistration'));
 const DocumentViewer = lazy(() => import('./pages/DocumentViewer'));
 const NotFound = lazy(() => import('./pages/NotFound'));
+const Newsletter = lazy(() => import('./pages/Newsletter'));
 
 // Specialized Information Pages
 const CertificatePage = lazy(() => import('./pages/CertificatePage'));
@@ -144,6 +145,7 @@ const App: React.FC = () => {
                 <Route path="/gallery" element={<Gallery />} />
                 <Route path="/gallery/:slug" element={<Gallery />} />
                 <Route path="/testimonials" element={<Testimonials />} />
+                <Route path="/newsletter" element={<Newsletter />} />
 
                 {/* --- REDIRECTS --- */}
                 <Route path="/services/training" element={<Navigate to="/training" replace />} />
