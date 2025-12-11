@@ -12,44 +12,28 @@ interface TestimonialCarouselProps {
 const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({ testimonials, autoPlayInterval = 6000 }) => {
   const [current, setCurrent] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const [animating, setAnimating] = useState(false);
 
   useEffect(() => {
     if (isPaused) return;
     const interval = setInterval(() => {
-      handleNext();
+      setCurrent((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
     }, autoPlayInterval);
     return () => clearInterval(interval);
-  }, [current, isPaused, autoPlayInterval]);
+  }, [current, isPaused, autoPlayInterval, testimonials.length]);
 
   const handleNext = () => {
-    setAnimating(true);
-    setTimeout(() => {
-      setCurrent((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
-      setAnimating(false);
-    }, 300); // Wait for exit animation
+    setCurrent((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
   };
 
   const handlePrev = () => {
-    setAnimating(true);
-    setTimeout(() => {
-      setCurrent((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
-      setAnimating(false);
-    }, 300);
+    setCurrent((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
   };
 
   const handleDotClick = (index: number) => {
-    if (index === current) return;
-    setAnimating(true);
-    setTimeout(() => {
-      setCurrent(index);
-      setAnimating(false);
-    }, 300);
+    setCurrent(index);
   };
 
   if (!testimonials || testimonials.length === 0) return null;
-
-  const activeItem = testimonials[current];
 
   // Helper to generate initials from name
   const getInitials = (name: string) => {
@@ -98,47 +82,57 @@ const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({ testimonials,
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
         >
-            {/* Main Card */}
-            <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl hover:shadow-2xl border border-gray-200 dark:border-gray-700 p-8 md:p-12 relative min-h-[320px] flex items-center transition-all duration-300">
-                {/* Large Quote Icon */}
-                <Quote className="absolute top-8 left-8 text-blue-100 dark:text-gray-700 w-24 h-24 -z-0 opacity-50 transform -scale-x-100" />
+            {/* Main Carousel Container */}
+            <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl hover:shadow-2xl border border-gray-200 dark:border-gray-700 overflow-hidden relative min-h-[320px] transition-shadow duration-300">
                 
-                <div className={`relative z-10 w-full flex flex-col md:flex-row items-center gap-8 md:gap-12 transition-opacity duration-300 ${animating ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'}`}>
-                    
-                    {/* Avatar / Profile Side */}
-                    <div className="shrink-0 flex flex-col items-center">
-                        <div className={`w-24 h-24 rounded-full bg-gradient-to-br ${getAvatarColor(activeItem.name)} flex items-center justify-center text-white text-3xl font-bold shadow-lg mb-4 ring-4 ring-gray-100 dark:ring-gray-700`}>
-                            {getInitials(activeItem.name)}
-                        </div>
-                        <div className="flex gap-1 text-amber-400" aria-label="5 out of 5 stars">
-                            {[1,2,3,4,5].map(i => <Star key={i} size={18} fill="currentColor" className="drop-shadow-sm" />)}
-                        </div>
-                    </div>
+                {/* Large Quote Icon (Stationary Background) */}
+                <div className="absolute top-8 left-8 z-0 pointer-events-none">
+                    <Quote className="text-blue-100 dark:text-gray-700 w-24 h-24 opacity-50 transform -scale-x-100" />
+                </div>
 
-                    {/* Content Side */}
-                    <div className="text-center md:text-left flex-grow">
-                        <blockquote className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 font-medium leading-relaxed mb-6 italic">
-                            "{activeItem.content}"
-                        </blockquote>
-                        <div>
-                            <h4 className="text-xl font-bold text-gray-900 dark:text-white">{activeItem.name}</h4>
-                            <p className="text-primary dark:text-blue-400 font-semibold text-sm uppercase tracking-wide mt-1">{activeItem.role}</p>
+                {/* Sliding Track */}
+                <div 
+                    className="flex transition-transform duration-700 ease-in-out" 
+                    style={{ transform: `translateX(-${current * 100}%)` }}
+                >
+                    {testimonials.map((item) => (
+                        <div key={item.id} className="w-full shrink-0 p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 md:gap-12 relative z-10">
+                            {/* Avatar / Profile Side */}
+                            <div className="shrink-0 flex flex-col items-center">
+                                <div className={`w-24 h-24 rounded-full bg-gradient-to-br ${getAvatarColor(item.name)} flex items-center justify-center text-white text-3xl font-bold shadow-lg mb-4 ring-4 ring-gray-100 dark:ring-gray-700`}>
+                                    {getInitials(item.name)}
+                                </div>
+                                <div className="flex gap-1 text-amber-400" aria-label="5 out of 5 stars">
+                                    {[1,2,3,4,5].map(i => <Star key={i} size={18} fill="currentColor" className="drop-shadow-sm" />)}
+                                </div>
+                            </div>
+
+                            {/* Content Side */}
+                            <div className="text-center md:text-left flex-grow">
+                                <blockquote className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 font-medium leading-relaxed mb-6 italic">
+                                    "{item.content}"
+                                </blockquote>
+                                <div>
+                                    <h4 className="text-xl font-bold text-gray-900 dark:text-white">{item.name}</h4>
+                                    <p className="text-primary dark:text-blue-400 font-semibold text-sm uppercase tracking-wide mt-1">{item.role}</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    ))}
                 </div>
             </div>
 
             {/* Navigation Buttons - Floating */}
             <button 
                 onClick={handlePrev}
-                className="absolute top-1/2 -left-4 md:-left-8 -translate-y-1/2 bg-white dark:bg-gray-800 text-gray-800 dark:text-white p-3 md:p-4 rounded-full shadow-lg hover:bg-primary hover:text-white dark:hover:bg-blue-600 transition-all focus:outline-none focus:ring-4 focus:ring-blue-100 dark:focus:ring-gray-700 z-20 border border-gray-200 dark:border-gray-700 group-hover:scale-100 md:scale-90"
+                className="absolute top-1/2 -left-4 md:-left-8 -translate-y-1/2 bg-white dark:bg-gray-800 text-gray-800 dark:text-white p-3 md:p-4 rounded-full shadow-lg hover:bg-primary hover:text-white dark:hover:bg-blue-600 transition-all focus:outline-none focus:ring-4 focus:ring-blue-100 dark:focus:ring-gray-700 z-20 border border-gray-200 dark:border-gray-700 md:opacity-0 md:group-hover:opacity-100 opacity-100 scale-100"
                 aria-label="Previous testimonial"
             >
                 <ChevronLeft size={24} />
             </button>
             <button 
                 onClick={handleNext}
-                className="absolute top-1/2 -right-4 md:-right-8 -translate-y-1/2 bg-white dark:bg-gray-800 text-gray-800 dark:text-white p-3 md:p-4 rounded-full shadow-lg hover:bg-primary hover:text-white dark:hover:bg-blue-600 transition-all focus:outline-none focus:ring-4 focus:ring-blue-100 dark:focus:ring-gray-700 z-20 border border-gray-200 dark:border-gray-700 group-hover:scale-100 md:scale-90"
+                className="absolute top-1/2 -right-4 md:-right-8 -translate-y-1/2 bg-white dark:bg-gray-800 text-gray-800 dark:text-white p-3 md:p-4 rounded-full shadow-lg hover:bg-primary hover:text-white dark:hover:bg-blue-600 transition-all focus:outline-none focus:ring-4 focus:ring-blue-100 dark:focus:ring-gray-700 z-20 border border-gray-200 dark:border-gray-700 md:opacity-0 md:group-hover:opacity-100 opacity-100 scale-100"
                 aria-label="Next testimonial"
             >
                 <ChevronRight size={24} />
