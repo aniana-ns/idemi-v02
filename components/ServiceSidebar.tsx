@@ -70,6 +70,17 @@ const SERVICE_MENU = [
     ]
   },
   {
+    title: 'Featured Specialized Courses',
+    path: '/training', // Keeps 'Training' parent active
+    items: [
+      { label: 'ANSYS Training', path: '/courses/mechanical-courses/ansys' },
+      { label: 'Unigraphics (NX)', path: '/courses/mechanical-courses/unigraphics' },
+      { label: 'AutoCAD Mechanical', path: '/courses/mechanical-courses/autocad' },
+      { label: 'AR / VR & Graphics', path: '/courses/animation/arvr' },
+      { label: 'UX / UI Design', path: '/uxui' },
+    ]
+  },
+  {
     title: 'Government Schemes',
     path: '/training/schemes/day-nulm',
     items: [
