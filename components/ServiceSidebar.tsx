@@ -124,8 +124,8 @@ const ServiceSidebar: React.FC = () => {
 
   return (
     <div className="sticky top-24">
-      <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700">
-        <h3 className="font-bold text-lg mb-4 text-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-700 pb-2">Service Categories</h3>
+      <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
+        <h3 className="font-bold text-lg mb-4 text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-700 pb-2">Service Categories</h3>
         <div className="space-y-4">
           {SERVICE_MENU.map((group, idx) => {
             // Check if any child is active to expand the group
@@ -137,10 +137,10 @@ const ServiceSidebar: React.FC = () => {
               <div key={idx} className="space-y-1">
                 <Link 
                   to={group.path} 
-                  className={`flex items-center justify-between w-full px-3 py-2 rounded font-medium transition-colors ${
+                  className={`flex items-center justify-between w-full px-3 py-2 rounded font-medium transition-colors border border-transparent ${
                     isGroupActive 
-                      ? 'bg-primary text-white' 
-                      : 'hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200'
+                      ? 'bg-primary text-white border-primary shadow-sm' 
+                      : 'hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200 hover:border-gray-200 dark:hover:border-gray-600'
                   }`}
                 >
                   {group.title}
@@ -149,7 +149,7 @@ const ServiceSidebar: React.FC = () => {
                 
                 {/* Submenu */}
                 {isGroupActive && (
-                  <div className="pl-3 ml-3 border-l-2 border-gray-100 dark:border-gray-700 space-y-1 mt-1">
+                  <div className="pl-3 ml-3 border-l-2 border-gray-200 dark:border-gray-700 space-y-1 mt-1">
                     {group.items.map((item, subIdx) => {
                         const isExternal = item.path.startsWith('http');
                         const linkProps = isExternal ? { href: item.path, target: "_blank", rel: "noopener noreferrer" } : { to: item.path };
@@ -162,8 +162,8 @@ const ServiceSidebar: React.FC = () => {
                                 {...(linkProps as any)}
                                 className={`block px-3 py-1.5 text-sm rounded transition-colors ${
                                 isItemActive
-                                    ? 'text-primary dark:text-blue-400 font-bold bg-blue-50 dark:bg-gray-700/50'
-                                    : 'text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-blue-300'
+                                    ? 'text-primary dark:text-blue-400 font-bold bg-blue-50 dark:bg-gray-700/50 border border-blue-100 dark:border-gray-600'
+                                    : 'text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-blue-300 hover:bg-gray-50 dark:hover:bg-gray-800'
                                 }`}
                             >
                                 {item.label}
@@ -178,10 +178,10 @@ const ServiceSidebar: React.FC = () => {
         </div>
       </div>
 
-      <div className="mt-8 bg-secondary text-white p-6 rounded-lg shadow-lg">
+      <div className="mt-8 bg-secondary text-white p-6 rounded-lg shadow-lg border border-secondary/20">
         <h3 className="font-bold text-lg mb-2">Need Assistance?</h3>
         <p className="text-sm opacity-90 mb-4">Our experts are here to help you choose the right service.</p>
-        <Link to="/contact" className="block w-full text-center bg-white text-secondary font-bold py-2 rounded hover:bg-gray-100 transition transform hover:scale-[1.02] active:scale-[0.98]">
+        <Link to="/contact" className="block w-full text-center bg-white text-secondary font-bold py-2 rounded hover:bg-gray-100 transition transform hover:scale-[1.02] active:scale-[0.98] shadow-sm">
             Contact Us
         </Link>
       </div>
