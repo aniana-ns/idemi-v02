@@ -50,10 +50,10 @@ const HomePopup: React.FC = () => {
     const openTimer = setTimeout(() => {
       setIsOpen(true);
 
-      // Auto-close after 5 seconds
+      // Auto-close after 3 seconds
       closeTimer = setTimeout(() => {
         setIsOpen(false);
-      }, 5000);
+      }, 3000);
     }, 2000);
 
     return () => {
@@ -68,31 +68,31 @@ const HomePopup: React.FC = () => {
     <>
       {/* 
         --- TRIGGER BUTTON --- 
-        Scaled down on mobile (scale-90) and adjusted padding/text size for better fit.
+        Partially hidden on the right side, slides out on hover.
       */}
       <div 
-        className={`fixed z-[90] right-0 top-[60%] md:top-[70%] transition-transform duration-500 ease-out origin-right scale-90 md:scale-100 ${
-          isOpen ? 'translate-x-full opacity-0' : 'translate-x-0 opacity-100'
+        className={`fixed z-[90] right-0 top-[60%] md:top-[70%] transition-transform duration-300 ease-out origin-right scale-90 md:scale-100 ${
+          isOpen ? 'translate-x-full opacity-0' : 'translate-x-[calc(100%-56px)] hover:translate-x-0 opacity-100'
         }`}
       >
         <button
           onClick={() => setIsOpen(true)}
-          className="group relative flex items-center bg-white dark:bg-gray-800 text-gray-900 dark:text-white py-2 pl-3 pr-5 md:py-2.5 md:pl-4 md:pr-6 rounded-l-full shadow-lg border-y border-l border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 active:scale-95"
+          className="group relative flex items-center bg-white dark:bg-gray-800 text-gray-900 dark:text-white py-2 pl-2 pr-4 md:py-2.5 md:pl-3 md:pr-6 rounded-l-full shadow-lg border-y border-l border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 active:scale-95"
           aria-label="Open Updates"
         >
           {/* Pulsing Dot */}
-          <span className="absolute top-0 right-0 -mt-1 -mr-1 flex h-3 w-3 md:h-4 md:w-4">
+          <span className="absolute top-1 left-2 flex h-3 w-3 md:h-4 md:w-4 z-20">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-3 w-3 md:h-4 md:w-4 bg-red-500 border-2 border-white dark:border-gray-800"></span>
           </span>
 
-          <div className="flex flex-col items-start mr-2 md:mr-3">
+          <div className="bg-red-50 dark:bg-red-900/20 p-1.5 md:p-2 rounded-full text-red-600 dark:text-red-400 group-hover:rotate-12 transition-transform duration-300 shrink-0">
+            <Bell size={16} className="md:w-[18px] md:h-[18px]" fill="currentColor" />
+          </div>
+
+          <div className="flex flex-col items-start ml-3 whitespace-nowrap">
             <span className="text-[9px] md:text-[10px] font-bold text-red-600 dark:text-red-400 uppercase tracking-widest leading-none">Latest</span>
             <span className="text-xs md:text-sm font-black uppercase leading-none mt-0.5">Updates</span>
-          </div>
-          
-          <div className="bg-red-50 dark:bg-red-900/20 p-1.5 md:p-2 rounded-full text-red-600 dark:text-red-400 group-hover:rotate-12 transition-transform duration-300">
-            <Bell size={16} className="md:w-[18px] md:h-[18px]" fill="currentColor" />
           </div>
         </button>
       </div>
