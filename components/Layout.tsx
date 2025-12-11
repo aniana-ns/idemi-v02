@@ -41,7 +41,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   }, [location.pathname, location.hash]);
 
   return (
-    <div className="min-h-screen flex flex-col font-sans bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-200">
+    <div className="min-h-screen flex flex-col font-sans bg-gray-100 dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-200">
       {/* Accessibility Skip Link */}
       <a 
         href="#main-content" 
