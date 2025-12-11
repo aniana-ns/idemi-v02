@@ -19,6 +19,7 @@ const SITEMAP_DATA = [
       { label: 'Extension - Nagpur', path: '/extension-centre/nagpur' },
       { label: 'Sub-Centre - Sakinaka', path: '/extension-centre/sakinaka' },
       { label: 'Testimonials', path: '/testimonials' },
+      { label: 'Newsletter', path: '/newsletter' },
       { label: 'Privacy Policy', path: '/privacy-policy' },
       { label: 'Terms of Use', path: '/terms' },
     ]
@@ -40,6 +41,9 @@ const SITEMAP_DATA = [
       { label: 'Technology Transfer', path: '/services/design-development/techtransfer' },
       { label: 'Tool Room Infrastructure', path: '/services/tool-room-infrastructure' },
       { label: 'Consultancy Services', path: '/services/consultancy' },
+      { label: 'Library', path: '/services/library' },
+      { label: 'Hostel Facilities', path: '/services/hostel' },
+      { label: 'Auditorium', path: '/services/auditorium' },
     ]
   },
   {
@@ -81,8 +85,14 @@ const SITEMAP_DATA = [
       { label: 'Sponsored Schemes', path: '/training/schemes/day-nulm' },
       { label: 'Job Fair', path: '/jobfair' },
       { label: 'Student Registration', path: '/student-registration' },
+      { label: 'Alumni Registration', path: '/alumni-registration' },
       { label: 'SC-ST Beneficiaries', path: '/training/sc_st_beneficiaries' },
       { label: 'Training Enquiry', path: '/training/enquiry' },
+      { label: 'ANSYS Training', path: '/courses/mechanical-courses/ansys' },
+      { label: 'Unigraphics (NX)', path: '/courses/mechanical-courses/unigraphics' },
+      { label: 'AutoCAD Mechanical', path: '/courses/mechanical-courses/autocad' },
+      { label: 'AR / VR & Graphics', path: '/courses/animation/arvr' },
+      { label: 'UX/UI Design', path: '/uxui' },
     ]
   },
   {
