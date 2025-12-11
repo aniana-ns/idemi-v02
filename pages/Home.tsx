@@ -206,9 +206,19 @@ const Home: React.FC = () => {
     <>
       <SEO 
         seo={{ 
-          title: 'IDEMI - Institute for Design of Electrical Measuring Instruments', 
-          description: 'IDEMI Mumbai - A Government of India Society under Ministry of MSME offering Calibration, Testing, Tool Design, Manufacturing, and Technical Training services.',
-          keywords: ['IDEMI', 'MSME', 'Calibration', 'Testing', 'Tool Room', 'Training', 'NABL', 'Mumbai', 'Electrical', 'Measuring Instruments', 'Government of India'],
+          title: 'IDEMI Mumbai | MSME Technology Centre | Government of India Society', 
+          description: 'IDEMI Mumbai - A premier MSME Technology Centre under Ministry of MSME, Govt. of India. Offering NABL Accredited Calibration, Testing, Tool Room Services, and AICTE Approved Technical Training.',
+          keywords: [
+            'IDEMI Mumbai', 
+            'MSME Technology Centre', 
+            'Government of India Society', 
+            'NABL Calibration Laboratory', 
+            'Electrical Testing Lab', 
+            'Tool Room Mumbai', 
+            'Technical Training Institute', 
+            'Skill India',
+            'Sion Chunabhatti'
+          ],
           schemaType: 'Organization'
         }} 
         path="/" 
