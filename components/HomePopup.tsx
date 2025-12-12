@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
-import { X, Bell, ChevronRight, ArrowRight, Zap, ExternalLink, Calendar, Megaphone } from 'lucide-react';
-import { Link } from '../lib/cms';
+import { X, Bell, ChevronRight, ArrowRight, Megaphone } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const UPDATES = [
   { 
@@ -46,14 +46,14 @@ const HomePopup: React.FC = () => {
     setIsMounted(true);
     let closeTimer: ReturnType<typeof setTimeout>;
 
-    // Auto-open after a slight delay to allow the user to settle in
+    // Auto-open after a slight delay
     const openTimer = setTimeout(() => {
       setIsOpen(true);
 
-      // Auto-close after 3 seconds
+      // Auto-close after 5 seconds if not interacted
       closeTimer = setTimeout(() => {
         setIsOpen(false);
-      }, 3000);
+      }, 5000);
     }, 2000);
 
     return () => {
@@ -68,47 +68,46 @@ const HomePopup: React.FC = () => {
     <>
       {/* 
         --- TRIGGER BUTTON --- 
-        Partially hidden on the right side, slides out on hover.
+        Fixed to the right side. Added high contrast border and shadow.
       */}
       <div 
-        className={`fixed z-[90] right-0 top-[60%] md:top-[70%] transition-transform duration-300 ease-out origin-right scale-90 md:scale-100 ${
-          isOpen ? 'translate-x-full opacity-0' : 'translate-x-[calc(100%-56px)] hover:translate-x-0 opacity-100'
+        className={`fixed z-[1001] right-0 top-[60%] md:top-[70%] transition-transform duration-300 ease-out origin-right scale-90 md:scale-100 ${
+          isOpen ? 'translate-x-full opacity-0' : 'translate-x-[calc(100%-60px)] hover:translate-x-0 opacity-100'
         }`}
       >
         <button
           onClick={() => setIsOpen(true)}
-          className="group relative flex items-center bg-white dark:bg-gray-800 text-gray-900 dark:text-white py-2 pl-2 pr-4 md:py-2.5 md:pl-3 md:pr-6 rounded-l-full shadow-lg border-y border-l border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 active:scale-95"
+          className="group relative flex items-center bg-white dark:bg-slate-800 text-slate-900 dark:text-white py-3 pl-3 pr-5 rounded-l-2xl shadow-[0_4px_25px_rgba(0,0,0,0.15)] dark:shadow-[0_4px_25px_rgba(0,0,0,0.5)] border-y border-l border-gray-100 dark:border-slate-700 hover:shadow-[0_8px_30px_rgba(0,0,0,0.25)] transition-all duration-300 active:scale-95 border-l-4 border-l-red-500"
           aria-label="Open Updates"
         >
           {/* Pulsing Dot */}
-          <span className="absolute top-1 left-2 flex h-3 w-3 md:h-4 md:w-4 z-20">
+          <span className="absolute top-1.5 left-2.5 flex h-3 w-3 z-20">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-3 w-3 md:h-4 md:w-4 bg-red-500 border-2 border-white dark:border-gray-800"></span>
+            <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500 border-2 border-white dark:border-gray-800"></span>
           </span>
 
-          <div className="bg-red-50 dark:bg-red-900/20 p-1.5 md:p-2 rounded-full text-red-600 dark:text-red-400 group-hover:rotate-12 transition-transform duration-300 shrink-0">
-            <Bell size={16} className="md:w-[18px] md:h-[18px]" fill="currentColor" />
+          <div className="bg-red-50 dark:bg-red-900/20 p-2 rounded-full text-red-600 dark:text-red-400 group-hover:rotate-12 transition-transform duration-300 shrink-0 shadow-sm">
+            <Bell size={20} fill="currentColor" />
           </div>
 
           <div className="flex flex-col items-start ml-3 whitespace-nowrap">
-            <span className="text-[9px] md:text-[10px] font-bold text-red-600 dark:text-red-400 uppercase tracking-widest leading-none">Latest</span>
-            <span className="text-xs md:text-sm font-black uppercase leading-none mt-0.5">Updates</span>
+            <span className="text-[10px] font-bold text-red-600 dark:text-red-400 uppercase tracking-widest leading-none">Latest</span>
+            <span className="text-sm font-black uppercase leading-none mt-1">Updates</span>
           </div>
         </button>
       </div>
 
       {/* 
         --- MODAL OVERLAY --- 
-        Backdrop blur with spring animation for the card.
       */}
       <div 
         className={`fixed inset-0 z-[2000] flex items-center justify-center sm:items-end sm:justify-end sm:p-6 transition-all duration-500 ${
           isOpen ? 'visible pointer-events-auto' : 'invisible pointer-events-none'
         }`}
       >
-        {/* Backdrop Area (Click to close) */}
+        {/* Backdrop Area */}
         <div 
-          className={`absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity duration-500 ${
+          className={`absolute inset-0 bg-black/40 backdrop-blur-[2px] transition-opacity duration-500 ${
             isOpen ? 'opacity-100' : 'opacity-0'
           }`}
           onClick={() => setIsOpen(false)}
@@ -116,7 +115,7 @@ const HomePopup: React.FC = () => {
 
         {/* Floating Card */}
         <div 
-          className={`relative w-[85vw] max-w-[340px] sm:w-full sm:max-w-sm bg-white dark:bg-gray-900 rounded-2xl shadow-2xl border border-gray-100 dark:border-gray-700 overflow-hidden flex flex-col max-h-[80vh] sm:mr-2 sm:mb-16 transition-all duration-500 cubic-bezier(0.34, 1.56, 0.64, 1) ${
+          className={`relative w-[85vw] max-w-[340px] sm:w-full sm:max-w-sm bg-white dark:bg-gray-900 rounded-2xl shadow-2xl border border-gray-100 dark:border-gray-700 overflow-hidden flex flex-col max-h-[80vh] sm:mr-2 sm:mb-16 transition-all duration-500 cubic-bezier(0.34, 1.56, 0.64, 1) ring-1 ring-black/5 ${
             isOpen 
               ? 'opacity-100 scale-100 translate-y-0 sm:translate-x-0' 
               : 'opacity-0 scale-95 translate-y-10 sm:translate-x-8'
