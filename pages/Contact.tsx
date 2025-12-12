@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { useLocation, Link } from '../lib/cms';
+import { useLocation, Link } from 'react-router-dom';
 import { MapPin, Phone, Mail, Clock, AlertCircle, CheckCircle, Send, MessageSquare, Loader2 } from 'lucide-react';
 import SEO from '../components/SEO';
 import { useScrollAnimation } from '../lib/useScrollAnimation';
